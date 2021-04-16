@@ -8,7 +8,7 @@
 ## File structure
   - root/
 	  - assets/
-		- routes/
+	  - routes/
 		- node-package-modules/
 		- node-package.json
 		- server.js
