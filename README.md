@@ -9,6 +9,6 @@
   - root/
 	  - assets/
 	  - routes/
-		- node-package-modules/
-		- node-package.json
-		- server.js
+	  - node-package-modules/
+	  - node-package.json
+	  - server.js
