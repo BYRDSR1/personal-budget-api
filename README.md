@@ -7,9 +7,9 @@
 ---
 ## File structure
   - root/
-	  - assets/
-	  - routes/
-	  - node-modules/
+    - assets/
+    - routes/
+    - node-modules/
     - package-lock.json
-	  - package.json
-	  - server.js
+    - package.json
+    - server.js
