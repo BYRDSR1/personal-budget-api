@@ -5,7 +5,7 @@ const envelopesRouter = express.Router();
 const envelopes = require("../db/db.js");
 
 //Helper function
-const convertEnvelopeToString = require("../utils/funcs.js");
+const convertEnvelopeToHTML = require("../utils/funcs.js");
 
 envelopesRouter.get("/", (req, res, next) => {
 	console.log( typeof envelopes);
