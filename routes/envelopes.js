@@ -1,15 +1,39 @@
 const express = require("express");
 const envelopesRouter = express.Router();
+const path = require("path");
 
 //Envelopes array
 const envelopes = require("../db/db.js");
 
 //Helper function
-const convertEnvelopeToHTML = require("../utils/funcs.js");
+const {
+	convertEnvelopesToHTML,
+  addToEnvelopes
+} = require("../utils/funcs.js");
 
 envelopesRouter.get("/", (req, res, next) => {
 	console.log( typeof envelopes);
-	res.send(convertEnvelopeToString(envelopes));
+	res.sendFile(path.join(__dirname, "..", "public", "envelopes.html"));
 });
+
+envelopesRouter.get("/list", (req, res, next) => {
+  res.json([convertEnvelopesToHTML(envelopes)]);
+});
+
+envelopesRouter.param("name", (req, res, next, id) => {
+	req.body.name = req.params.name;
+	next();
+});
+
+envelopesRouter.param("amount", (req, res, next, id) => {
+	req.body.amount = req.params.amount;
+	next();
+});
+
+envelopesRouter.post("/", (req, res, next) => {
+	const body = req.body;
+	const newEnvelope = addToEnvelopes(body.name, body.amount);
+	res.status(201).send(newEnvelope);
+})
 
 module.exports = envelopesRouter;

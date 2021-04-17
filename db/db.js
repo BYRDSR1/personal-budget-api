@@ -2,7 +2,6 @@
 const envelopes = [
   {"name": "bills", "amount": 500},
 	{"name": "bills", "amount": 500},
-	{"name": "bills", "amount": 500}
 ];
 
 

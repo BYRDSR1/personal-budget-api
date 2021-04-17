@@ -7,17 +7,14 @@ const PORT = process.env.port || 3000;
 
 //Routers
 const envelopesRouter = require("./routes/envelopes.js");
+const homeRouter = require("./routes/home.js");
 
 //cors
 app.use(cors());
 
-//Main page
-app.get("/", (req, res) => {
-	res.send("Hello, World!");
-});
-
 //Routers
 app.use("/envelopes", envelopesRouter);
+app.use("/", homeRouter);
 
 app.listen(PORT, () => {
 	console.log(`SERVER LISTENING ON PORT ${PORT}`);

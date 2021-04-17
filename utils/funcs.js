@@ -9,4 +9,12 @@ const convertEnvelopesToHTML = (array) => {
 	return envString;
 } 
 
-module.exports = convertEnvelopesToHTML;
+const addToEnvelopes = (name, amount) => {
+	let envelope = {name: name, amount: amount};
+	envelopes.push(envelopes);
+}
+
+module.exports = {
+	convertEnvelopesToHTML,
+  addToEnvelopes
+};
