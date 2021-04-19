@@ -31,8 +31,10 @@ envelopesRouter.param("amount", (req, res, next, id) => {
 });
 
 envelopesRouter.post("/", (req, res, next) => {
-	const body = req.body;
-	const newEnvelope = addToEnvelopes(body.name, body.amount);
+	const name = req.body.name;
+	const amount = req.body.amount;
+	const newEnvelope = addToEnvelopes(name, amount);
+	console.log(newEnvelope);
 	res.status(201).send(newEnvelope);
 })
 

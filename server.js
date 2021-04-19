@@ -12,6 +12,10 @@ const homeRouter = require("./routes/home.js");
 //cors
 app.use(cors());
 
+app.use(express.urlencoded({
+  extended: true
+}))
+app.use(express.json());
 //Routers
 app.use("/envelopes", envelopesRouter);
 app.use("/", homeRouter);
