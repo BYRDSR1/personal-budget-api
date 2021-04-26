@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta charset="utf-8" />
+	<title>Personal Budget</title>
+	<script>
+		const postData = async () => {
+			const dName = document.getElementById("name");
+			const dAmount = document.getElementById("amount");
+			const data = JSON.stringify({name: dName, amount: dAmount});
+			try {
+				const response = await fetch("http://localhost:3000/envelopes", {
+					method: "POST",
+					body: JSON.stringify(data),
+					headers: {
+						"Content-type": "application/json"
+					}
+				});
+				if(response.ok) {
+					const jsonResponse = await response.json();
+					console.log(jsonResponse);
+				}
+			} catch(e) {
+				console.log(e);
+			}
+		}
+	</script>
+</head>
+<body>
+  <ul id="envelopes-list"></ul>
+  <form action="/envelopes" method="post">
+    <input type="text" name="name" /><br/>
+		<input type="text" name="amount" /><br/>
+		<input type="submit" onclick="postData()"value="Submit" />
+	</form>
+	<script>
+    const list = document.getElementById("envelopes-list");
+		const getData = async () => {
+		  try {
+				const response = await fetch("http://localhost:3000/envelopes/list");
+				if(response.ok) {
+					const jsonResponse = await response.json();
+					console.log(jsonResponse);
+					return jsonResponse;
+				}
+			} catch(e) {
+				console.log(e);
+			}
+		}
+		const items = getData().then(jsonResponse => {list.innerHTML = jsonResponse[0]});
+	</script>
+</body>
+</html>
