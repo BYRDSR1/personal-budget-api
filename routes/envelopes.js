@@ -4,7 +4,7 @@ const path = require("path");
 
 //Envelopes array
 const envelopes = require("../db/db.js");
-
+console.log(envelopes);
 //Helper function
 const {
 	convertEnvelopesToHTML,
@@ -12,12 +12,11 @@ const {
 } = require("../utils/funcs.js");
 
 envelopesRouter.get("/", (req, res, next) => {
-	console.log( typeof envelopes);
 	res.sendFile(path.join(__dirname, "..", "public", "envelopes.html"));
 });
 
 envelopesRouter.get("/list", (req, res, next) => {
-  res.json([convertEnvelopesToHTML(envelopes)]);
+  res.json({"data":convertEnvelopesToHTML(envelopes)});
 });
 /*
 envelopesRouter.param("name", (req, res, next, id) => {
@@ -34,12 +33,12 @@ envelopesRouter.param("amount", (req, res, next, id) => {
 */
 envelopesRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
-	console.log(name);
 	const amount = req.body.amount;
-	console.log(amount);
+	console.log("POST route variables: ", name, amount, "\n");
 	const newEnvelope = addToEnvelopes(name, amount);
 	console.log(newEnvelope);
-	res.status(201).send("HI");
+	console.log(envelopes[2]);
+	res.status(201).sendFile(path.join(__dirname, "..", "public", "envelopes.html"));
 })
 
 module.exports = envelopesRouter;
