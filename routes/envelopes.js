@@ -19,23 +19,27 @@ envelopesRouter.get("/", (req, res, next) => {
 envelopesRouter.get("/list", (req, res, next) => {
   res.json([convertEnvelopesToHTML(envelopes)]);
 });
-
+/*
 envelopesRouter.param("name", (req, res, next, id) => {
 	req.body.name = req.params.name;
+	console.log(req.body.name);
 	next();
 });
 
 envelopesRouter.param("amount", (req, res, next, id) => {
 	req.body.amount = req.params.amount;
+	console.log(req.body.amount);
 	next();
 });
-
+*/
 envelopesRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
+	console.log(name);
 	const amount = req.body.amount;
+	console.log(amount);
 	const newEnvelope = addToEnvelopes(name, amount);
 	console.log(newEnvelope);
-	res.status(201).send(newEnvelope);
+	res.status(201).send("HI");
 })
 
 module.exports = envelopesRouter;

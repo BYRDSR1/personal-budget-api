@@ -10,8 +10,10 @@ const convertEnvelopesToHTML = (array) => {
 } 
 
 const addToEnvelopes = (name, amount) => {
-	let envelope = {name: name, amount: amount};
+	let envelope = {"name": name, "amount": amount};
 	envelopes.push(envelopes);
+	console.log(envelopes);
+	return envelope;
 }
 
 module.exports = {
