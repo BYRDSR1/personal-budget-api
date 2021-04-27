@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8" />
 	<title>Personal Budget</title>
+	<!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 	<script>
 		const postData = async () => {
 			const dName = document.getElementById("name");
@@ -28,12 +34,26 @@
 	</script>
 </head>
 <body>
-  <ul id="envelopes-list"></ul>
-  <form action="/envelopes" method="post">
-    <input type="text" name="name" /><br/>
-		<input type="text" name="amount" /><br/>
-		<input type="submit" onclick="postData()"value="Submit" />
-	</form>
+  <div id="wrapper">
+	  <header>
+			
+		</header>
+		<main>
+      <ul id="envelopes-list" class="list-group"></ul>
+      <form action="/envelopes" method="post">
+        <input type="text" name="name" /><br/>
+		    <input type="text" name="amount" /><br/>
+		    <input type="submit" onclick="postData()"value="Submit" />
+	    </form>
+		</main>
+	</div>
+	<script>
+		document.body.onchange = () => {
+			const ulList = document.getElementById("envelopes-list");
+			const ulListChildren = ulList.children;
+			console.log(ulListChildren);
+		}
+	</script>
 	<script>
     const list = document.getElementById("envelopes-list");
 		const getData = async () => {
