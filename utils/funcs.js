@@ -12,7 +12,7 @@ const convertEnvelopesToHTML = (array) => {
 	console.log(array)
 	let envString = "";
 	array.forEach(element => {
-		let str = "<p>" + element.name + " - " + element.amount + "<\p>";
+		let str = '<li class="list-group-item">' + element.name + " - " + element.amount + '<\li>';
 		envString += str;
 	});
 	return envString;
@@ -21,7 +21,7 @@ const convertEnvelopesToHTML = (array) => {
 //Maybe JSON.stringify()????
 /*Try this link for help: https://stackoverflow.com/questions/8892465/what-does-object-object-mean-javascript*/
 const convertArrayToString = (array) => {
-	return array.toString();
+	return JSON.stringify(array);
 }
 
 const addToEnvelopes = (name, amount) => {
@@ -32,7 +32,7 @@ const addToEnvelopes = (name, amount) => {
 	let envelope = {"name": name, "amount": amount};
 	envelopes.push(envelope);
 	console.log(envelopes);
-	const data = 'const envelopes = [' + convertArrayToString([{"name": "bills", "amount": 500},{"name": "bills", "amount": 500},]) + '];module.exports = envelopes;'
+	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
 		console.log(err)
 		/*fs.writeFile(path.join(__dirname, "..", "db", "db.js"), backup, (error) => {

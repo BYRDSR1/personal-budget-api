@@ -38,7 +38,9 @@ envelopesRouter.post("/", (req, res, next) => {
 	const newEnvelope = addToEnvelopes(name, amount);
 	console.log(newEnvelope);
 	console.log(envelopes[2]);
-	res.status(201).sendFile(path.join(__dirname, "..", "public", "envelopes.html"));
+	res.status(201);
+	res.redirect("/envelopes");
+	next();
 })
 
 module.exports = envelopesRouter;
