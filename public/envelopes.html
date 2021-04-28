@@ -32,18 +32,28 @@
 			}
 		}
 	</script>
+	<style>
+    li {
+			text-decoration: none;
+		}
+	</style>
 </head>
 <body>
   <div id="wrapper">
 	  <header>
-			
+			<h1>Envelopes</h1>
+			<hr />
 		</header>
 		<main>
-      <ul id="envelopes-list" class="list-group"></ul>
-      <form action="/envelopes" method="post">
-        <input type="text" name="name" /><br/>
-		    <input type="text" name="amount" /><br/>
-		    <input type="submit" onclick="postData()"value="Submit" />
+		  <div class="row">
+			  <div class="col-sm-3"></div>
+        <ul style="text-align: center;text-decoration:none;" id="envelopes-list" class="list-group col-sm-6"></ul>
+			</div>
+			<div class="col-sm-3"></div>
+      <form class="col-sm-6" action="/envelopes" method="post">
+        Bill: <br/><input type="text" name="name" /><br/>
+		    Amount: <br/><input type="text" name="amount" /><br/>
+		    <input type="submit" class="btn btn-success" onclick="postData()"value="Submit" />
 	    </form>
 		</main>
 	</div>
