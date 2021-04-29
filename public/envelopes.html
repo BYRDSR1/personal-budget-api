@@ -15,10 +15,13 @@
 	<script>
 	  /**
 		* postData()
-		* async function that posts form data to the server database
+		*
+		* async function that posts form data to the server database.
 		* 
 		* Gets the data from #name and #amount from the form, then sets puts that in an object.
 		* A post fetch() request is then made to /evelopes. 
+		* 
+		* @since 
 		*/
 		const postData = async () => {
 			const name = document.getElementById("name");
@@ -88,7 +91,7 @@
   </div>
 	<script>
 	  /**
-		* 
+		* getData()
 		*/
 		const getData = async () => {
 		  try {
