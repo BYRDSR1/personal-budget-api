@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8" />
 	<title>Personal Budget</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--Start Bootstrap CDN (And jQuery I think)-->
 	<!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,8 +21,6 @@
 		* 
 		* Gets the data from #name and #amount from the form, then sets puts that in an object.
 		* A post fetch() request is then made to /evelopes. 
-		* 
-		* @since 
 		*/
 		const postData = async () => {
 			const name = document.getElementById("name");
@@ -48,10 +47,11 @@
 	<script>
 	  /**
 		* removeMarkers()
-		* removes those weird :marker <li> things
+		* 
+		* Removes those weird :marker <li> things.
 		*
 		* Gets all the <li> elements in #envelopes-list, then iterates through the 
-		* HTMLCollection to see if it has a falsy innerHTML value. If it does, it removes it from the DOM
+		* HTMLCollection to see if it has a falsy innerHTML value. If it does, it removes it from the DOM.
 		*/
 	  const removeMarkers = () => {
 		  const ulList = document.getElementById("envelopes-list");
@@ -67,15 +67,33 @@
 	<style>
     li {
 		  text-decoration: none;
-	}
+	  }
 	</style>
 </head>
 <body>
   <div id="wrapper" class="container-fluid">
 	  <header class="row">
-			<h1>Envelopes</h1>
-			<hr />
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-4"><strong>Envelopes</strong></h1>
 		</header>
+		<nav class="navbar navbar-inverse">
+		  <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">WebSiteName</a>
+        </div>
+			</div>
+		  <div class="container-fluid collapse navbar-collapse" id="nav">
+		    <ul class="nav navbar-nav">
+				  <li><a href="/">Home</a></li>
+				  <li class="active"><a href="/envelopes">Envelopes</a></li>
+			  </ul>
+			</div>
+		</nav>
 		<main class="row">
 		  <div class="row">
 			<div class="col-sm-3"></div>
@@ -92,6 +110,12 @@
 	<script>
 	  /**
 		* getData()
+		* 
+		* Gets data from the server database.
+		* 
+		* Fetches /envelopes/list which returns the HTML for the list items
+		* in a JSON object under the key "data". Then, it assigns the returned data to 
+		* #envelopes-list. Finally, it runs removeMarkers().
 		*/
 		const getData = async () => {
 		  try {
