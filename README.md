@@ -3,7 +3,7 @@
 ## **Codecademy Backend Project**
 ---
 ## Description
-  An Express/Node api that uses envolope budgeting principles
+  An Express/Node API for a website that budgets according to envelope [budgeting principles](https://www.thebalance.com/what-is-envelope-budgeting-1293682)
 ---
 ## How to use
   1) Download project code
