@@ -3,18 +3,27 @@
 <head>
   <meta charset="utf-8" />
 	<title>Personal Budget</title>
+	<!--Start Bootstrap CDN (And jQuery I think)-->
 	<!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!--End Bootstrap CDN-->
+	<!--postData()-->
 	<script>
+	  /**
+		* postData()
+		* async function that posts form data to the server database
+		* 
+		* Gets the data from #name and #amount from the form, then sets puts that in an object.
+		* A post fetch() request is then made to /evelopes. 
+		*/
 		const postData = async () => {
-			const dName = document.getElementById("name");
-			const dAmount = document.getElementById("amount");
-			const data = {name: dName, amount: dAmount};
-			console.log(data);
+			const name = document.getElementById("name");
+			const amount = document.getElementById("amount");
+			const data = {name: name, amount: amount};
 			try {
 				const response = await fetch("http://localhost:3000/envelopes", {
 					method: "POST",
@@ -25,24 +34,31 @@
 				});
 				if(response.ok) {
 					const jsonResponse = await response.json();
-					console.log(jsonResponse);
 				}
 			} catch(e) {
+			  //get request to err page
 				console.log(e);
 			}
 		}
 	</script>
+	<!--removeMarkers()-->
 	<script>
+	  /**
+		* removeMarkers()
+		* removes those weird :marker <li> things
+		*
+		* Gets all the <li> elements in #envelopes-list, then iterates through the 
+		* HTMLCollection to see if it has a falsy innerHTML value. If it does, it removes it from the DOM
+		*/
 	  const removeMarkers = () => {
-		const ulList = document.getElementById("envelopes-list");
-		const ulListChildren = ulList.children;
-		console.log(ulListChildren, ulListChildren.length, ulListChildren.item(0));
-		for(let i = 0; i < ulListChildren.length; i++) {
-		  let item = ulListChildren.item(i);
-		  if(!item.innerHTML) {
-			item.remove();
+		  const ulList = document.getElementById("envelopes-list");
+		  const ulListChildren = ulList.children;
+		  for(let i = 0; i < ulListChildren.length; i++) {
+		    let item = ulListChildren.item(i);
+		    if(!item.innerHTML) {
+			    item.remove();
+		    }
 		  }
-		}
 	  };
 	</script>
 	<style>
@@ -71,7 +87,9 @@
 		</main>
   </div>
 	<script>
-	    const list = document.getElementById("envelopes-list");
+	  /**
+		* 
+		*/
 		const getData = async () => {
 		  try {
 				const response = await fetch("http://localhost:3000/envelopes/list");
@@ -84,6 +102,7 @@
 				console.log(e);
 			}
 		}
+		const list = document.getElementById("envelopes-list");
 		const items = getData().then(jsonResponse => {list.innerHTML = jsonResponse.data}).then(() => {removeMarkers();});
 	</script>
 </body>
