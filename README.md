@@ -18,6 +18,9 @@
       - db_backup.js
     - node-modules/
     - public/
+		  - css/
+			  - envelopes-stylesheet.css
+				- home-stylesheet.css
       - envelopes.html
       - index.html
     - routes/
