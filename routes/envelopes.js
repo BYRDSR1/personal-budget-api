@@ -4,7 +4,7 @@ const path = require("path");
 
 //Envelopes array
 const envelopes = require("../db/db.js");
-console.log(envelopes);
+
 //Helper function
 const {
 	convertEnvelopesToHTML,
@@ -34,10 +34,7 @@ envelopesRouter.param("amount", (req, res, next, id) => {
 envelopesRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
 	const amount = req.body.amount;
-	console.log("POST route variables: ", name, amount, "\n");
 	const newEnvelope = addToEnvelopes(name, amount);
-	console.log(newEnvelope);
-	console.log(envelopes[2]);
 	res.status(201);
 	res.redirect("/envelopes");
 	next();
