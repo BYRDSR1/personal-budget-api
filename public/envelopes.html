@@ -77,17 +77,16 @@
 			<h1 class="col-sm-4"><strong>Envelopes</strong></h1>
 		</header>
 		<nav class="navbar navbar-inverse">
-		  <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">WebSiteName</a>
-        </div>
-			</div>
-		  <div class="container-fluid collapse navbar-collapse" id="nav">
+      <div class="container-fluid">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">Personal Budget</a>
+      </div>
+		  <div class="collapse navbar-collapse" id="nav">
 		    <ul class="nav navbar-nav">
 				  <li><a href="/">Home</a></li>
 				  <li class="active"><a href="/envelopes">Envelopes</a></li>
@@ -95,15 +94,15 @@
 			</div>
 		</nav>
 		<main class="row">
-		  <div class="row">
-			<div class="col-sm-3"></div>
-              <ul style="text-align: center;text-decoration:none;" id="envelopes-list" class="list-group col-sm-6"></ul>
+			<div class="col-sm-3">
+        <ul style="text-align: center;text-decoration:none;" id="envelopes-list" class="list-group col-sm-6"></ul>
 			</div>
-			<div class="col-sm-3"></div>
+			<div class="col-sm-3">
             <form class="col-sm-6" action="/envelopes" method="post">
               Bill: <br/><input type="text" name="name" /><br/>
-		      Amount: <br/><input type="text" name="amount" /><br/>
+		          Amount: <br/><input type="text" name="amount" /><br/>
 		    <input type="submit" class="btn btn-success" onclick="postData()"value="Submit" />
+				</div>
 	    </form>
 		</main>
   </div>
