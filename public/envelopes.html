@@ -3,18 +3,29 @@
 <head>
   <meta charset="utf-8" />
 	<title>Personal Budget</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!--Start Bootstrap CDN (And jQuery I think)-->
 	<!-- Latest compiled and minified CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<!-- Latest compiled JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<!--End Bootstrap CDN-->
+	<!--postData()-->
 	<script>
+	  /**
+		* postData()
+		*
+		* async function that posts form data to the server database.
+		* 
+		* Gets the data from #name and #amount from the form, then sets puts that in an object.
+		* A post fetch() request is then made to /evelopes. 
+		*/
 		const postData = async () => {
-			const dName = document.getElementById("name");
-			const dAmount = document.getElementById("amount");
-			const data = {name: dName, amount: dAmount};
-			console.log(data);
+			const name = document.getElementById("name");
+			const amount = document.getElementById("amount");
+			const data = {name: name, amount: amount};
 			try {
 				const response = await fetch("http://localhost:3000/envelopes", {
 					method: "POST",
@@ -25,53 +36,155 @@
 				});
 				if(response.ok) {
 					const jsonResponse = await response.json();
-					console.log(jsonResponse);
 				}
 			} catch(e) {
+			  //get request to err page
 				console.log(e);
 			}
 		}
 	</script>
+	<!--removeMarkers()-->
 	<script>
+	  /**
+		* removeMarkers()
+		* 
+		* Removes those weird :marker <li> things.
+		*
+		* Gets all the <li> elements in #envelopes-list, then iterates through the 
+		* HTMLCollection to see if it has a falsy innerHTML value. If it does, it removes it from the DOM.
+		*/
 	  const removeMarkers = () => {
-		const ulList = document.getElementById("envelopes-list");
-		const ulListChildren = ulList.children;
-		console.log(ulListChildren, ulListChildren.length, ulListChildren.item(0));
-		for(let i = 0; i < ulListChildren.length; i++) {
-		  let item = ulListChildren.item(i);
-		  if(!item.innerHTML) {
-			item.remove();
+		  const ulList = document.getElementById("envelopes-list");
+		  const ulListChildren = ulList.children;
+		  for(let i = 0; i < ulListChildren.length; i++) {
+		    let item = ulListChildren.item(i);
+		    if(!item.innerHTML) {
+			    item.remove();
+		    }
 		  }
-		}
 	  };
+		
+		/**
+		* hasClass(element, search)
+		* 
+		* Checks if an element has a class.
+		*
+		* Gets the list of all the classes on element, then iterates through each one.
+		* If the search is found as one of the classes, it returns true, otherwise it returns false.
+		* 
+		* @param {Object}  element  An element from the DOM.
+		* @param {String}  search   A string representing the class one wishes to find.
+		* 
+		* @return {Boolean}  True or false depending on whether the search was found.
+		*/
+		
+		const hasClass = (element, search) => {
+			let list = element.classList;
+			list.forEach(item => {
+			  if(item = search) {
+					return true;
+				}
+			});
+			return false;
+		}
+		
+		/**
+		* checkContent()
+		* 
+		* Checks if content is in the text boxes.
+		* 
+		* Gets the value of the two inputs and checks if they're falsy. If they are, it adds the 
+		* .error class to the blank input. If it's truthy, it checks if it has the .error class. If the inputs do,
+		* it removes it.
+		*/
+		const checkContent = () => {
+		console.log("hi");
+		  const bill = document.getElementById("name");
+			const amount = document.getElementById("amount");
+			
+			//If either input value is falsy
+			if(!bill.value || !amount.value) {
+				//Adds .error if they don't have it
+				if(!hasClass(bill, "error")) {
+					bill.classList.add("error");
+					return;
+				}
+				if(!hasClass(amount, "error")) {
+					amount.classList.add("error");
+					return;
+				}
+			} else {
+			  if(hasClass(bill, "error")) {
+				  bill.classList.remove("error");
+				}
+				if(hasClass(amount, "error")) {
+				  amount.classList.remove("error");
+				}
+				postData();
+			}
+		}
 	</script>
 	<style>
     li {
 		  text-decoration: none;
-	}
+	  }
 	</style>
 </head>
 <body>
   <div id="wrapper" class="container-fluid">
 	  <header class="row">
-			<h1>Envelopes</h1>
-			<hr />
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-4"><strong>Envelopes</strong></h1>
 		</header>
-		<main class="row">
-		  <div class="row">
-			<div class="col-sm-3"></div>
-              <ul style="text-align: center;text-decoration:none;" id="envelopes-list" class="list-group col-sm-6"></ul>
+		<nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">Personal Budget</a>
+      </div>
+		  <div class="collapse navbar-collapse" id="nav">
+		    <ul class="nav navbar-nav">
+				  <li><a href="/">Home</a></li>
+				  <li class="active"><a href="/envelopes">Envelopes</a></li>
+			  </ul>
 			</div>
-			<div class="col-sm-3"></div>
-            <form class="col-sm-6" action="/envelopes" method="post">
-              Bill: <br/><input type="text" name="name" /><br/>
-		      Amount: <br/><input type="text" name="amount" /><br/>
-		    <input type="submit" class="btn btn-success" onclick="postData()"value="Submit" />
-	    </form>
+		</nav>
+		<main class="row">
+			<div class="col-sm-6">
+        <ul style="text-align: center;text-decoration:none;" id="envelopes-list" class="list-group"></ul>
+			</div>
+			<div class="col-sm-2"></div>
+			<div class="col-sm-3">
+        <form class="col-sm-7 row" action="/envelopes" method="post">
+				  <div class="row center-block">
+            <strong>Bill: </strong><br/><input type="text" name="name" /><br/>
+					</div>
+					<div class="row center-block">
+		        <strong>Amount: </strong><br/><input type="text" name="amount" /><br/>
+					</div>
+					<br />
+					<div class="row text-center col-sm-offset-1">
+		        <input type="submit" class="btn btn-success" onclick="checkContent()"value="Submit" />
+				    <input type="reset" class="btn btn-danger" value="Reset" />
+					</div>
+	      </form>
+			</div>
 		</main>
   </div>
 	<script>
-	    const list = document.getElementById("envelopes-list");
+	  /**
+		* getData()
+		* 
+		* Gets data from the server database.
+		* 
+		* Fetches /envelopes/list which returns the HTML for the list items
+		* in a JSON object under the key "data". Then, it assigns the returned data to 
+		* #envelopes-list. Finally, it runs removeMarkers().
+		*/
 		const getData = async () => {
 		  try {
 				const response = await fetch("http://localhost:3000/envelopes/list");
@@ -84,6 +197,7 @@
 				console.log(e);
 			}
 		}
+		const list = document.getElementById("envelopes-list");
 		const items = getData().then(jsonResponse => {list.innerHTML = jsonResponse.data}).then(() => {removeMarkers();});
 	</script>
 </body>

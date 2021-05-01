@@ -9,7 +9,6 @@ const backup = `const envelopes = [
 
 module.exports = envelopes;`
 const convertEnvelopesToHTML = (array) => {
-	console.log(array)
 	let envString = "";
 	array.forEach(element => {
 		let str = '<li class="list-group-item">' + element.name + " - " + element.amount + '<\li>';
@@ -28,16 +27,11 @@ const addToEnvelopes = (name, amount) => {
 	if(name == null) {
 		return;
 	}
-	console.log("addToEnvelopes(): ", name, amount, "\n");
 	let envelope = {"name": name, "amount": amount};
 	envelopes.push(envelope);
-	console.log(envelopes);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
 		console.log(err)
-		/*fs.writeFile(path.join(__dirname, "..", "db", "db.js"), backup, (error) => {
-			console.log(error);
-		});*/
 	});
 	console.log(envelopes);
 	return envelope;
