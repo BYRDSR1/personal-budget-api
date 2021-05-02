@@ -1,13 +1,10 @@
 const envelopes = require("../db/db.js");
 const fs = require("fs");
 const path = require("path");
-const backup = `const envelopes = [
-  {"name": "bills", "amount": 500},
-	{"name": "bills", "amount": 500},
-];
+const count = require("../db/db.js")
 
+console.log(count);
 
-module.exports = envelopes;`
 const convertEnvelopesToHTML = (array) => {
 	let envString = "";
 	array.forEach(element => {
@@ -23,7 +20,7 @@ const convertArrayToString = (array) => {
 	return JSON.stringify(array);
 }
 
-const addToEnvelopes = (name, amount) => {
+const addToEnvelopes = (name, amount, id) => {
 	if(name == null) {
 		return;
 	}
