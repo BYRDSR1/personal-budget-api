@@ -1,3 +1,1 @@
-const count = 3;
-
-module.exports = count;
+const count = 3;module.exports = count;

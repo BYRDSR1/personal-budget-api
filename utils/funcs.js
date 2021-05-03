@@ -24,7 +24,7 @@ const addToEnvelopes = (name, amount, id) => {
 	if(name == null) {
 		return;
 	}
-	let envelope = {"name": name, "amount": amount};
+	let envelope = {"name": name, "amount": amount, "id": id};
 	envelopes.push(envelope);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
