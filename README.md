@@ -8,8 +8,7 @@
 ## How to use
   1) Download project code
   2) Go into root/ and run the command `npm run dev`
-  3) GO to http://localhost:3000/
-  4) The only current working page is http://localhost:3000/envelopes
+  3) Go to http://localhost:3000/
 ---
 ## File structure
   - root/
