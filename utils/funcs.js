@@ -3,8 +3,6 @@ const fs = require("fs");
 const path = require("path");
 const count = require("../db/db.js")
 
-console.log(count);
-
 const convertEnvelopesToHTML = (array) => {
 	let envString = "";
 	array.forEach(element => {
@@ -14,8 +12,6 @@ const convertEnvelopesToHTML = (array) => {
 	return envString;
 } 
 
-//Maybe JSON.stringify()????
-/*Try this link for help: https://stackoverflow.com/questions/8892465/what-does-object-object-mean-javascript*/
 const convertArrayToString = (array) => {
 	return JSON.stringify(array);
 }
@@ -30,7 +26,6 @@ const addToEnvelopes = (name, amount, id) => {
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
 		console.log(err)
 	});
-	console.log(envelopes);
 	return envelope;
 }
 
