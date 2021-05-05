@@ -27,8 +27,7 @@ envelopesRouter.post("/", (req, res, next) => {
 	const amount = req.body.amount;	
 	const data = "const count = " + (count + 1) + ";module.exports = count;"
 	fs.writeFile(path.join(__dirname, "..", "db", "count.js"), data, err => {
-		console.log(err);
-		//res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
 	});
 	const newEnvelope = addToEnvelopes(name, amount, count);
 	res.status(201);
