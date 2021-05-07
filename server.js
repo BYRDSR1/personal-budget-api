@@ -13,7 +13,7 @@ const homeRouter = require("./routes/home.js");
 const searchRouter = require("./routes/search.js");
 
 //express.static
-//app.use(express.static("public"));
+app.use(express.static("public"));
 
 //cors
 app.use(cors());
@@ -29,7 +29,7 @@ app.use("/", homeRouter);
 app.use("/search", searchRouter);
 
 //Nonexistent page
-/*
+
 app.get("/:path", (req, res, next) => {
 	const file = req.params.path;
 	fs.readFile(file, (err, data) => {
@@ -40,7 +40,7 @@ app.get("/:path", (req, res, next) => {
 		}
 	})
 });
-*/
+
 app.listen(PORT, () => {
 	console.log(`SERVER LISTENING ON PORT ${PORT}`);
 });
