@@ -24,8 +24,9 @@
 <body>
   <div id="wrapper" class="container-fluid">
 	  <header class="row">
-		  <div class="col-sm-5"></div>
-			<h1 class="col-sm-4"><strong>Envelopes</strong></h1>
+		  <div class="col-sm-4"></div>
+			<h1 class="col-sm-4" style="text-align:center;"><strong>Envelopes</strong></h1>
+			<div class="col-sm-4"></div>
 		</header>
 		<nav class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -53,10 +54,10 @@
 			<div class="col-sm-3">
         <form class="col-sm-7 row" action="/envelopes" method="post">
 				  <div class="row center-block">
-            <strong>Bill: </strong><br/><input type="text" name="name" /><br/>
+            <strong>Bill: </strong><br/><input type="text" name="name" required /><br/>
 					</div>
 					<div class="row center-block">
-		        <strong>Amount: </strong><br/><input type="text" name="amount" /><br/>
+		        <strong>Amount: </strong><br/><input type="text" name="amount" required /><br/>
 					</div>
 					<br />
 					<div class="row text-center col-sm-offset-1">
