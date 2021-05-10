@@ -12,7 +12,8 @@ const {
 
 searchRouter.get("/", (req, res, next) => {
 	res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
-		name: "search"
+		name: "search",
+		data: null
 	});
 });
 
@@ -20,9 +21,16 @@ searchRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
 	const id = parseInt(req.body.id);
 	if(id) {
-		res.send(findEnvelope(id));
+		res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			name: "search",
+			data: findEnvelope(id)
+		});
 	} else {
-		res.send(findEnvelope(name));
+		console.log(findEnvelope(name));
+		res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			name: "search",
+			data: findEnvelope(name)
+		});
 	}
 	next();
 });

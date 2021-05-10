@@ -25,6 +25,7 @@
 		}
 	}
 	</script>
+	<script src="scripts/funcs.js"></script>
 </head>
 <body>
   <div id="wrapper" class="container-fluid">
@@ -44,7 +45,7 @@
 			</div>
 			<div class="row">
 				<div class="container row col-sm-6">
-					<p id="envelope"><span class="h3">Search For An Envelope</span></p>
+					<p id="envelope"><span class="h3"><% if(data) {%><%- data %><%} else {%>Search For An Envelope<%} %></span></p>
 				</div>
 				<form class="col-sm-6 container" method="post" action="/search">
 					<div class="row">
@@ -75,5 +76,8 @@
 			</div>
 		</main>
 	</div>
+	<script>
+	  setInterval(removeMarkers, 1000)
+	</script>
 </body>
 </html>

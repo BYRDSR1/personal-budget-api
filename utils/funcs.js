@@ -41,7 +41,7 @@ const findEnvelope = (find) => {
 	if(!matched[0]) {
 		return `Unable to find an item with ${type} "${find}"`;
 	}
-	return matched;
+	return convertEnvelopesToHTML(matched);
 }
 
 module.exports = {
