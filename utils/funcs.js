@@ -34,9 +34,13 @@ const findEnvelope = (find) => {
 	let matched = [];
 	envelopes.forEach(envelope => {
 		if(envelope[type] == find) {
+			
 			matched.push(envelope);
 		}
 	});
+	if(!matched[0]) {
+		return `Unable to find an item with ${type} "${find}"`;
+	}
 	return matched;
 }
 
