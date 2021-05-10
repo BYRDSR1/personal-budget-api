@@ -3,11 +3,14 @@ const homeRouter = express.Router();
 const path = require("path");
 
 homeRouter.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname, "..", "public", "index.html"));
+	res.render(path.join(__dirname, "..", "views", "pages", "index.ejs"), {
+		name: "home"
+	});
 });
 
 homeRouter.get("/scripts/:file", (req, res) => {
 	const file = req.params.file;
-	res.sendFile(path.join(__dirname, "..", "public", "scripts", file));
+	res.sendFile(path.join(__dirname, "..", "views", "pages", "scripts", file));
 });
+
 module.exports = homeRouter;

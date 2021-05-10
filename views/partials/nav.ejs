@@ -1,0 +1,16 @@
+<div class="container-fluid">
+      <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#nav">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand">Personal Budget</a>
+      </div>
+		  <div class="collapse navbar-collapse" id="nav">
+		    <ul class="nav navbar-nav">
+				  <li <% if (name == "home") {%> class="active" <%} %> ><a href="/">Home</a></li>
+				  <li <% if (name == "envelopes") {%> class="active" <%} %> ><a href="/envelopes">Envelopes</a></li>
+					<li <% if (name == "search") {%> class="active" <%} %> ><a href="/search">Find An Envelope</a></li>
+			  </ul>
+			</div>

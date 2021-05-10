@@ -13,7 +13,7 @@ const homeRouter = require("./routes/home.js");
 const searchRouter = require("./routes/search.js");
 
 //express.static
-app.use(express.static("public"));
+app.use(express.static("views/pages"));
 
 //cors
 app.use(cors());

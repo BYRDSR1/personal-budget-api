@@ -11,7 +11,9 @@ const {
 } = require("../utils/funcs.js")
 
 searchRouter.get("/", (req, res, next) => {
-	res.sendFile(path.join(__dirname, "..", "public", "search.html"));
+	res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+		name: "search"
+	});
 });
 
 searchRouter.post("/", (req, res, next) => {

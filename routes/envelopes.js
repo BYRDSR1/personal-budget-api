@@ -15,7 +15,9 @@ const {
 } = require("../utils/funcs.js");
 
 envelopesRouter.get("/", (req, res, next) => {
-	res.sendFile(path.join(__dirname, "..", "public", "envelopes.html"));
+	res.render(path.join(__dirname, "..", "views", "pages", "envelopes.ejs"), {
+		name: "envelopes"
+	});
 });
 
 envelopesRouter.get("/list", (req, res, next) => {
