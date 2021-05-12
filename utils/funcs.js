@@ -29,19 +29,26 @@ const addToEnvelopes = (name, amount, id) => {
 	return envelope;
 }
 
-const findEnvelope = (find) => {
+const findEnvelope = (find, format="html") => {
 	const type = typeof find == "string" ? "name" : "id";
 	let matched = [];
 	envelopes.forEach(envelope => {
 		if(envelope[type] == find) {
-			
 			matched.push(envelope);
 		}
 	});
 	if(!matched[0]) {
-		return `Unable to find an item with ${type} "${find}"`;
+		return null;
 	}
-	return convertEnvelopesToHTML(matched);
+	if(format == "html") {
+	  return convertEnvelopesToHTML(matched);
+	} else if(format == "object") {
+		return matched;
+	}
+}
+
+const updateEnvelope = () => {
+	
 }
 
 module.exports = {

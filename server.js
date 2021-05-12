@@ -11,6 +11,7 @@ const PORT = process.env.port || 3000;
 const envelopesRouter = require("./routes/envelopes.js");
 const homeRouter = require("./routes/home.js");
 const searchRouter = require("./routes/search.js");
+const updateRouter = require("./routes/update.js");
 
 //express.static
 app.use(express.static("views/pages"));
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use("/envelopes", envelopesRouter);
 app.use("/", homeRouter);
 app.use("/search", searchRouter);
+app.use("/update", updateRouter);
 
 //Nonexistent page
 

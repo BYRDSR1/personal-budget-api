@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <%- include ("../partials/head.ejs"); %>
+</head>
+<body>
+  <div id="wrapper" class="container-fluid">
+	  <header class="row">
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-4"><strong>Update</strong></h1>
+		</header>
+		<nav class="navbar navbar-inverse">
+      <%- include ("../partials/nav.ejs"); %>
+		</nav>
+		<main class="container-fluid">
+		  <div id="error" class="container">
+				<% if(findError) {%><%- findError %><%}%>
+			</div>
+		  <div class="row">
+			  <div class="col-sm-6 container">
+				  <div class="row">
+				    <h3 style="text-align:center;">Old Envelope</h3>
+					</div>
+					<form class="container" method="post" action="/update">
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4 center-block">
+							<strong>Name:</strong><br/><input type="text" id="name" name="name" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+					  <div class="col-sm-4">
+							<strong>Id:</strong><br/><input type="text" id="id" name="id" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+				</div>
+				<div class="col-sm-6 container">
+				  <div class="row">
+				    <h3 style="text-align:center;">New Envelope</h3>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+						<div class="col-sm-4 center-block">
+							<strong>New Name:</strong><br/><input type="text" id="newname" name="newname" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+					<div class="col-sm-4">
+							<strong>New Amount:</strong><br/><input type="text" id="newamount" name="newamount" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+					<br/>
+					<div class="row">
+					  <div class="col-sm-4"></div>
+						<input type="submit" class="col-sm-3 btn btn-success" value="Submit" />
+						<div class="col-sm-4"></div>
+					</div>
+				</form>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+</html>

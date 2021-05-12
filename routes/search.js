@@ -21,15 +21,29 @@ searchRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
 	const id = parseInt(req.body.id);
 	if(id) {
-		res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
-			name: "search",
-			data: findEnvelope(id)
-		});
+		if(!findEnvelope(id)) {
+			res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			  name: "search",
+			  data: `Unable to find an item with id "${id}"`
+		  });
+		} else {
+		  res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			  name: "search",
+			  data: findEnvelope(id)
+		  });
+		}
 	} else {
-		res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
-			name: "search",
-			data: findEnvelope(name)
-		});
+		if(!findEnvelope(name)) {
+			res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			  name: "search",
+			  data: `Unable to find an item with name "${name}"`
+		  });
+		} else {
+		  res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
+			  name: "search",
+			  data: findEnvelope(name)
+		  });
+		}
 	}
 	next();
 });
