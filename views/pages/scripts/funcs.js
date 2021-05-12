@@ -62,7 +62,7 @@ const removeMarkers = (item) => {
 	const ulListChildren = ulList.children;
 	for(let i = 0; i < ulListChildren.length; i++) {
 		let item = ulListChildren.item(i);
-		if(!item.innerHTML) {
+		if(!item.innerHTML || item.innerHTML == "\n\t\t\t\t") {
 			item.remove();
 		}
 	}
