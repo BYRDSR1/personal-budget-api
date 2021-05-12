@@ -57,8 +57,8 @@ const getData = async () => {
 * Gets all the <li> elements in #envelopes-list, then iterates through the 
 * HTMLCollection to see if it has a falsy innerHTML value. If it does, it removes it from the DOM.
 */
-const removeMarkers = () => {
-	const ulList = document.getElementById("envelopes-list");
+const removeMarkers = (item) => {
+	const ulList = document.getElementById(item);
 	const ulListChildren = ulList.children;
 	for(let i = 0; i < ulListChildren.length; i++) {
 		let item = ulListChildren.item(i);

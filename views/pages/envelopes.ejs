@@ -3,7 +3,7 @@
 <head>
   <%- include ("../partials/head.ejs"); %>
 	<!--postData()-->
-	<script src="scripts/envelopes-funcs.js"></script>
+	<script src="scripts/funcs.js"></script>
 	<!--removeMarkers()-->
 	<style>
     li {
@@ -46,7 +46,7 @@
 	<script>
 		window.onload = () => {
 			const list = document.getElementById("envelopes-list");
-		  const items = getData().then(jsonResponse => {list.innerHTML = jsonResponse.data}).then(() => {removeMarkers();});
+		  const items = getData().then(jsonResponse => {list.innerHTML = jsonResponse.data}).then(() => {removeMarkers("envelopes-list");});
 		}
 	</script>
 </body>
