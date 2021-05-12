@@ -26,6 +26,13 @@
 	}
 	</script>
 	<script src="scripts/funcs.js"></script>
+	<script>
+	  document.addEventListener('DOMContentLoaded', function() {
+		   const e = document.getElementById("envelope");
+       removeMarkers("envelope");
+			 console.log("here", e);
+    }, false);
+	</script>
 </head>
 <body>
   <div id="wrapper" class="container-fluid">
@@ -44,8 +51,8 @@
 				<div class="col-sm-3"></div>
 			</div>
 			<div class="row">
-				<div class="container row col-sm-6">
-					<p id="envelope"><span class="h3"><% if(data) {%><%- data %><%} else {%>Search For An Envelope<%} %></span></p>
+				<div id="envelope" class="container row col-sm-6">
+					<% if(data) {%><%- data %><%} else {%>Search For An Envelope<%} %>
 				</div>
 				<form class="col-sm-6 container" method="post" action="/search">
 					<div class="row">
@@ -66,8 +73,8 @@
 					<div class="row">
 						<div class="col-sm-4"></div>
 						<div class="row col-sm-4">
-						  <div class="col-sm-2"></div>
-						  <input type="submit" class="col-sm-4 btn btn-success" value="Submit" />
+						  <div class="col-sm-3"></div>
+						  <input type="submit" class="col-sm-5 btn btn-success" value="Submit" />
 							<div class="col-sm-6"></div>
 						</div>
 						<div class="col-sm-4"></div>
@@ -76,8 +83,5 @@
 			</div>
 		</main>
 	</div>
-	<script>
-	  setInterval(removeMarkers, 1000)
-	</script>
 </body>
 </html>

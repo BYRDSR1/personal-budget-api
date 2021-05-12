@@ -26,7 +26,6 @@ searchRouter.post("/", (req, res, next) => {
 			data: findEnvelope(id)
 		});
 	} else {
-		console.log(findEnvelope(name));
 		res.render(path.join(__dirname, "..", "views", "pages", "search.ejs"), {
 			name: "search",
 			data: findEnvelope(name)
