@@ -46,13 +46,35 @@ const findEnvelope = (find, format="html") => {
 		return matched;
 	}
 }
-
-const updateEnvelope = () => {
-	
+/**
+* updateEnvelope()
+* 
+* finds the old envelope from envelopes then updates it. It then uses fs to write envelopes back to db.js similar to how addEnvelope() does it.
+*
+* @param {Number|String}  find  Either the id or name of the old envelope
+* @param {Object}         info  An object that represents the new envelope
+*/
+const updateEnvelope = (find, info) => {
+	const envelope = findEnvelope(find, "object")[0];
+	console.log(envelope);
+	if(!info.name) {
+		info.name = envelope.name;
+	}
+	if(!info.amount) {
+		info.amount = envelope.amount;
+	}
+	envelope.name = info.name;
+	envelope.amount = parseInt(info.amount);
+	console.log(envelope);
+	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
+	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
+		console.log(err)
+	});
 }
 
 module.exports = {
 	convertEnvelopesToHTML,
   addToEnvelopes,
-	findEnvelope
+	findEnvelope,
+	updateEnvelope
 };
