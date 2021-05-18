@@ -12,7 +12,8 @@ const {
 
 deleteRouter.get("/", (req, res) => {
 	res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
-		name: "delete"
+		name: "delete",
+		info: `<h3 style="text-align:center"></h3>`
 	});
 });
 
