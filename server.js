@@ -12,7 +12,7 @@ const envelopesRouter = require("./routes/envelopes.js");
 const homeRouter = require("./routes/home.js");
 const searchRouter = require("./routes/search.js");
 const updateRouter = require("./routes/update.js");
-
+const deleteRouter = require("./routes/delete.js");
 //express.static
 app.use(express.static("views/pages"));
 
@@ -25,10 +25,11 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 //Routers
-app.use("/envelopes", envelopesRouter);
 app.use("/", homeRouter);
+app.use("/envelopes", envelopesRouter);
 app.use("/search", searchRouter);
 app.use("/update", updateRouter);
+app.use("/delete", deleteRouter);
 
 //Nonexistent page
 

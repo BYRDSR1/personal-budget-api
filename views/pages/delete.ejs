@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <%- include ("../partials/head.ejs"); %>
+</head>
+<body>
+  <div id="wrapper" class="container-fluid">
+	  <header class="row">
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-2" style="text-align: center;"><strong>Delete</strong></h1>
+			<div class="col-sm-5"></div>
+		</header>
+		<nav class="navbar navbar-inverse">
+      <%- include ("../partials/nav.ejs"); %>
+		</nav>
+		<main class="container-fluid">
+			<div id="error" class="container">
+				<% if(info) {%><%- info %><%}%>
+			</div>
+		  <form class="container" method="post" action="/delete">
+			  <div class="row">
+				  <div class="row">
+					  <div class="col-sm-4"></div>
+					  <div class="col-sm-4 center-block">
+					    <strong>Name:</strong><br/><input type="text" id="name" name="name" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+					  <div class="col-sm-4 center-block">
+					    <strong>Id:</strong><br/><input type="text" id="id" name="id" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+				</div>
+				<div class="row">
+					
+				</div>
+			</form>
+		</main>
+	</div>
+</body>
+</html>
