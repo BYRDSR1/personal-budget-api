@@ -14,7 +14,30 @@
       <%- include ("../partials/nav.ejs"); %>
 		</nav>
 		<main class="container-fluid">
-		  
+			<div id="error" class="container">
+				<% if(info) {%><%- info %><%}%>
+			</div>
+		  <form class="container" method="post" action="/delete">
+			  <div class="row">
+				  <div class="row">
+					  <div class="col-sm-4"></div>
+					  <div class="col-sm-4 center-block">
+					    <strong>Name:</strong><br/><input type="text" id="name" name="name" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+					<div class="row">
+						<div class="col-sm-4"></div>
+					  <div class="col-sm-4 center-block">
+					    <strong>Id:</strong><br/><input type="text" id="id" name="id" />
+						</div>
+						<div class="col-sm-4"></div>
+					</div>
+				</div>
+				<div class="row">
+					
+				</div>
+			</form>
 		</main>
 	</div>
 </body>
