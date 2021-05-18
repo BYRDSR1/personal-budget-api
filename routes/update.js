@@ -46,7 +46,12 @@ updateRouter.post("/", (req, res, next) => {
 			}
 		}
 	} else {
-		if(!findEnvelope(name, "object")) {
+		if(name === "") {
+			res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
+		    name: "update",
+		    findError: `<h3 style="text-align:center">Please enter a name or id</h3>`
+	    });
+		} else if(!findEnvelope(name, "object")) {
     	res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
 		    name: "update",
 		    findError: `<h3 style="text-align:center">Unable to find an item with name "${name}"</h3>`
