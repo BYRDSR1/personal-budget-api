@@ -56,7 +56,6 @@ const findEnvelope = (find, format="html") => {
 */
 const updateEnvelope = (find, info) => {
 	const envelope = findEnvelope(find, "object")[0];
-	console.log(envelope);
 	if(!info.name) {
 		info.name = envelope.name;
 	}
@@ -65,7 +64,6 @@ const updateEnvelope = (find, info) => {
 	}
 	envelope.name = info.name;
 	envelope.amount = parseInt(info.amount);
-	console.log(envelope);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
 		console.log(err)

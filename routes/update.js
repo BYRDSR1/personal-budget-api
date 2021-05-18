@@ -31,7 +31,7 @@ updateRouter.post("/", (req, res, next) => {
 		    findError: `<h3 style="text-align:center">Unable to find an item with id "${id}"</h3>`
 	    });
 		} else {
-			if(!newAmount XOR !newName) {
+			if(!newAmount && !newName) {
 				res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
 					name: "update",
 					findError: `<h3 style="text-align:center">Please enter a new amount or name</h3>`
@@ -46,7 +46,12 @@ updateRouter.post("/", (req, res, next) => {
 			}
 		}
 	} else {
-		if(!findEnvelope(name, "object")) {
+		if(name === "") {
+			res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
+		    name: "update",
+		    findError: `<h3 style="text-align:center">Please enter a name or id</h3>`
+	    });
+		} else if(!findEnvelope(name, "object")) {
     	res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
 		    name: "update",
 		    findError: `<h3 style="text-align:center">Unable to find an item with name "${name}"</h3>`
@@ -57,7 +62,7 @@ updateRouter.post("/", (req, res, next) => {
 		    findError: '<h3 style="text-align:center">There Are More Than One Envelopes with That Name, Please Use the Id</h3>'
 	    });
 		} else {
-			if(!newAmount XOR !newName) {
+			if(!newAmount && !newName) {
 				res.render(path.join(__dirname, "..", "views", "pages", "update.ejs"), {
 					name: "update",
 					findError: `<h3 style="text-align:center">Please enter a new amount or new name</h3>`
