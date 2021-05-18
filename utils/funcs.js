@@ -6,7 +6,7 @@ const count = require("../db/db.js")
 const convertEnvelopesToHTML = (array) => {
 	let envString = "";
 	array.forEach(element => {
-		let str = '<li class="list-group-item">' + element.name + " - " + element.amount + '<\li>';
+		let str = '<li class="list-group-item">' + element.id + " - " + element.name + " - " + "$" + element.amount + '<\li>';
 		envString += str;
 	});
 	return envString;
