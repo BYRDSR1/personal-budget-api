@@ -111,9 +111,19 @@ const updateEnvelope = (find, info) => {
 	});
 }
 
+const deleteEnvelope = (find) => {
+	const envelope = findEnvelope(find, "object")[0];
+	envelopes.splice(indexOf(envelope), 1);
+	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
+	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
+		console.log(err)
+	});
+}
+
 module.exports = {
 	convertEnvelopesToHTML,
   addToEnvelopes,
 	findEnvelope,
-	updateEnvelope
+	updateEnvelope,
+	deleteEnvelope
 };
