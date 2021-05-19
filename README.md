@@ -11,38 +11,38 @@
   3) Go to http://localhost:3000/
 ---
 ## File structure
-  - root/
-	  - backups/
-			- count_backup.js
-			- db_backup.js
-			- envelopes-funcs_backup.js
-    - db/
-			- count.js
-      - db.js
-    - node-modules/
+- root/
+	- backups/
+		- count_backup.js
+		- db_backup.js
+		- envelopes-funcs_backup.js
+    	- db/
+		- count.js
+      		- db.js
+    	- node-modules/
 			- ...
-    - routes/
-			- delete.js
-      - envelopes.js
-      - home.js
-			- reset.js
-			- search.js
-			- update.js
-    - utils/
-      - funcs.js
-		- views/
-			- pages/
-				- scripts/
-					- funcs.js
-				- delete.ejs
-				- envelopes.ejs
-				- index.ejs
-				- reset.ejs
-				- search.ejs
-				- update.ejs
-			- partials/
-				- head.ejs
-				- nav.ejs
+   	 - routes/
+		- delete.js
+      		- envelopes.js
+      		- home.js
+		- reset.js
+		- search.js
+		- update.js
+    	- utils/
+      		- funcs.js
+	- views/
+		- pages/
+			- scripts/
+				- funcs.js
+			- delete.ejs
+			- envelopes.ejs
+			- index.ejs
+			- reset.ejs
+			- search.ejs
+			- update.ejs
+		- partials/
+			- head.ejs
+			- nav.ejs
     - package-lock.json
     - package.json
 		- README.md
