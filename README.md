@@ -12,22 +12,38 @@
 ---
 ## File structure
   - root/
+	  - backups/
+			- count_backup.js
+			- db_backup.js
+			- envelopes-funcs_backup.js
     - db/
+			- count.js
       - db.js
-      - db_backup.js
     - node-modules/
-    - public/
-		  - css/
-			  - envelopes-stylesheet.css
-				- home-stylesheet.css
-      - envelopes.html
-      - index.html
+			- ...
     - routes/
+			- delete.js
       - envelopes.js
       - home.js
+			- reset.js
+			- search.js
+			- update.js
     - utils/
       - funcs.js
-    - README.md
+		- views/
+			- pages/
+				- scripts/
+					- funcs.js
+				- delete.ejs
+				- envelopes.ejs
+				- index.ejs
+				- reset.ejs
+				- search.ejs
+				- update.ejs
+			- partials/
+				- head.ejs
+				- nav.ejs
     - package-lock.json
     - package.json
+		- README.md
     - server.js
