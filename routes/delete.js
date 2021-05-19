@@ -8,7 +8,8 @@ const envelopes = require("../db/db.js");
 //Functions
 const {
 	findEnvelope,
-	deleteEnvelope
+	deleteEnvelope,
+	resetEnvelopeIds
 } = require("../utils/funcs.js")
 
 deleteRouter.get("/", (req, res, next) => {
@@ -24,6 +25,7 @@ deleteRouter.post("/", (req, res, next) => {
 	if(id) {
 		if(findEnvelope(id)) {
 			deleteEnvelope(id);
+			resetEnvelopeIds();
 			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
 				name: "delete",
 				info: `<h3 style="text-align:center">Envelope deleted successfully!</h3>`
@@ -44,6 +46,7 @@ deleteRouter.post("/", (req, res, next) => {
 			});
 			} else {
 				deleteEnvelope(name);
+				resetEnvelopeIds();
 				res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
 					name: "delete",
 					info: `<h3 style="text-align:center">Envelope deleted successfully!</h3>`
