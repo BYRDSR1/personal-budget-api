@@ -7,7 +7,8 @@ const fs = require("fs");
 const envelopes = require("../db/db.js");
 //Functions
 const {
-	findEnvelope
+	findEnvelope,
+	deleteEnvelope
 } = require("../utils/funcs.js")
 
 deleteRouter.get("/", (req, res, next) => {
@@ -15,7 +16,6 @@ deleteRouter.get("/", (req, res, next) => {
 		name: "delete",
 		info: `<h3 style="text-align:center">Enter an envelope's name or id</h3>`
 	});
-	next();
 });
 
 deleteRouter.post("/", (req, res, next) => {
@@ -23,19 +23,37 @@ deleteRouter.post("/", (req, res, next) => {
 	const id = parseInt(req.body.id);
 	if(id) {
 		if(findEnvelope(id)) {
-			//delete envelope
+			deleteEnvelope(id);
+			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+				name: "delete",
+				info: `<h3 style="text-align:center">Envelope deleted successfully!</h3>`
+			});
+			next();
 		} else {
-			//no envelope with id
+			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+				name: "delete",
+				info: `<h3 style="text-align:center">No envelope found with id ${id}</h3>`
+			});
 		}
 	} else {
 		if(findEnvelope(name)) {
 			if(findEnvelope(name).length > 1) {
-				//Too many envelopes with name
+			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+				name: "delete",
+				info: `<h3 style="text-align:center">Two many envelopes with name ${name}, please use the id</h3>`
+			});
 			} else {
-				//delete envelope
+				deleteEnvelope(name);
+				res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+					name: "delete",
+					info: `<h3 style="text-align:center">Envelope deleted successfully!</h3>`
+				});
 			}
 		} else {
-			//no envelope with name
+			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+				name: "delete",
+				info: `<h3 style="text-align:center">No envelope found with name ${name}</h3>`
+			});
 		}
 	}
 });
