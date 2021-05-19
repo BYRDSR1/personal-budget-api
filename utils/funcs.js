@@ -119,11 +119,34 @@ const deleteEnvelope = (find) => {
 		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
 	});
 }
+/**
+* resetEnvelopeIds()
+*
+* iterates through envelopes and assigns a new id based on location in the array. The total items in the array is counted, one is added to it, then it's written to count.js.
+* After that, the new envelopes array is written to db.js.
+* 
+*/
+
+const resetEnvelopeIds = () => {
+	for(let i = 1; i <= envelopes.length; i++) {
+		envelopes[(i-1)].id = i;
+	}
+	console.log(envelopes);
+	const countData = "const count = " + (envelopes.length + 1) + ";module.exports = count;";
+	fs.writeFile(path.join(__dirname, "..", "db", "count.js"), countData, (err) =>{
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+	});
+	const envelopeData = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
+	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+	});
+}
 
 module.exports = {
 	convertEnvelopesToHTML,
   addToEnvelopes,
 	findEnvelope,
 	updateEnvelope,
-	deleteEnvelope
+	deleteEnvelope,
+	resetEnvelopeIds
 };
