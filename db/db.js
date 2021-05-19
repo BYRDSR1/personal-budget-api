@@ -1,6 +1,1 @@
-const envelopes = [
-  {"name": "Bills", "amount": 500, "id": 1},
-	{"name": "Utilities", "amount": 500, "id": 2},
-];
-
-module.exports = envelopes;
+const envelopes = [{"name":"Utilities","amount":500,"id":1},{"name":"Food","amount":200,"id":2}];module.exports = envelopes;

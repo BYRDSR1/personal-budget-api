@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <%- include ("../partials/head.ejs"); %>
+</head>
+<body>
+  <div id="wrapper" class="container-fluid">
+	  <header class="row">
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-2" style="text-align: center;"><strong>Home</strong></h1>
+			<div class="col-sm-5"></div>
+		</header>
+		<nav class="navbar navbar-inverse">
+      <%- include ("../partials/nav.ejs"); %>
+		</nav>
+		<main class="container-fluid">
+		  <form class="container" method="post" action="/reset">
+			  <input class="btn btn-danger" type="submit" value="Reset"/>
+			</form>
+		</main>
+	</div>
+</body>
+</html>

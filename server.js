@@ -13,6 +13,8 @@ const homeRouter = require("./routes/home.js");
 const searchRouter = require("./routes/search.js");
 const updateRouter = require("./routes/update.js");
 const deleteRouter = require("./routes/delete.js");
+const resetRouter = require("./routes/reset.js");
+
 //express.static
 app.use(express.static("views/pages"));
 
@@ -30,6 +32,7 @@ app.use("/envelopes", envelopesRouter);
 app.use("/search", searchRouter);
 app.use("/update", updateRouter);
 app.use("/delete", deleteRouter);
+app.use("/reset", resetRouter);
 
 //Nonexistent page
 

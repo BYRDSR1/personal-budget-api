@@ -53,7 +53,7 @@ const addToEnvelopes = (name, amount, id) => {
 	envelopes.push(envelope);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		console.log(err)
 	});
 	return envelope;
 }
@@ -107,7 +107,7 @@ const updateEnvelope = (find, info) => {
 	envelope.amount = parseInt(info.amount);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		console.log(err);
 	});
 }
 
@@ -116,7 +116,7 @@ const deleteEnvelope = (find) => {
 	envelopes.splice(envelopes.indexOf(envelope), 1);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		console.log(err)
 	});
 }
 /**
@@ -134,11 +134,11 @@ const resetEnvelopeIds = () => {
 	console.log(envelopes);
 	const countData = "const count = " + (envelopes.length + 1) + ";module.exports = count;";
 	fs.writeFile(path.join(__dirname, "..", "db", "count.js"), countData, (err) =>{
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		console.log(err)
 	});
 	const envelopeData = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
-	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), envelopeData, (err) => {
+		console.log(err)
 	});
 }
 

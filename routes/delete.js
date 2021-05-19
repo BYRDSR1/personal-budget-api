@@ -23,7 +23,7 @@ deleteRouter.post("/", (req, res, next) => {
 	const name = req.body.name;
 	const id = parseInt(req.body.id);
 	if(id) {
-		if(findEnvelope(id)) {
+		if(findEnvelope(id, "object")) {
 			deleteEnvelope(id);
 			resetEnvelopeIds();
 			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
@@ -39,7 +39,7 @@ deleteRouter.post("/", (req, res, next) => {
 		}
 	} else {
 		if(findEnvelope(name)) {
-			if(findEnvelope(name).length > 1) {
+			if(findEnvelope(name, "object").length > 1) {
 			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
 				name: "delete",
 				info: `<h3 style="text-align:center">Two many envelopes with name ${name}, please use the id</h3>`
