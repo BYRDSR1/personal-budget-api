@@ -53,7 +53,7 @@ const addToEnvelopes = (name, amount, id) => {
 	envelopes.push(envelope);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		console.log(err)
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
 	});
 	return envelope;
 }
@@ -107,7 +107,7 @@ const updateEnvelope = (find, info) => {
 	envelope.amount = parseInt(info.amount);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		console.log(err)
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
 	});
 }
 
@@ -116,7 +116,7 @@ const deleteEnvelope = (find) => {
 	envelopes.splice(envelopes.indexOf(envelope), 1);
 	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
 	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
-		console.log(err)
+		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
 	});
 }
 
