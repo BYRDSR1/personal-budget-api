@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha tests/*",
-    "dev": "nodemon server.js --ext html,css,js",
+    "dev": "nodemon server.js --ext html,css,js,ejs",
 		"start": "node server.js"
   },
   "repository": {
