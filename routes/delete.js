@@ -37,7 +37,7 @@ deleteRouter.post("/", (req, res, next) => {
 				info: `<h3 style="text-align:center">No envelope found with id ${id}</h3>`
 			});
 		}
-	} else {
+	} else if(name) {
 		if(findEnvelope(name)) {
 			if(findEnvelope(name, "object").length > 1) {
 			res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
@@ -58,6 +58,11 @@ deleteRouter.post("/", (req, res, next) => {
 				info: `<h3 style="text-align:center">No envelope found with name ${name}</h3>`
 			});
 		}
+	} else {
+		res.render(path.join(__dirname, "..", "views", "pages", "delete.ejs"), {
+			name: "delete",
+			info: `<h3 style="text-align:center">Please enter a name or id</h3>`
+		});
 	}
 });
 

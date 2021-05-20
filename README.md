@@ -7,7 +7,7 @@
 ---
 ## How to use
   1) Download project code
-  2) Go into root/ and run the command `npm run dev`
+  2) Go into root/ and run the command `npm run start`
   3) Go to http://localhost:3000/
 ---
 ## File structure

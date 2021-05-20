@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <%- include ("../partials/head.ejs"); %>
+</head>
+<body>
+  <div id="wrapper" class="container-fluid">
+	  <header class="row">
+		  <div class="col-sm-5"></div>
+			<h1 class="col-sm-2" style="text-align: center;"><strong>Transfer</strong></h1>
+			<div class="col-sm-5"></div>
+		</header>
+		<nav class="navbar navbar-inverse">
+      <%- include ("../partials/nav.ejs"); %>
+		</nav>
+		<main class="container-fluid">
+			<div class="container">
+				<% if(info) {%><%- info %><%}%>
+			</div>
+			<form class="container" method="post" action="/transfer">
+				<div class="row">
+				  <div class="col-sm-6 container">
+					  <div class="row">
+				      <h3 style="text-align:center;">Envelope One</h3>
+					  </div>
+						<div class="row">
+						  <div class="col-sm-4"></div>
+						  <div class="col-sm-4 center-block">
+							  <strong>Name:</strong><br/><input type="text" id="nameone" name="nameone" />
+						  </div>
+						  <div class="col-sm-4"></div>
+					  </div>
+					  <div class="row">
+						  <div class="col-sm-4"></div>
+					    <div class="col-sm-4">
+							  <strong>Id:</strong><br/><input type="text" id="idone" name="idone" />
+						  </div>
+						  <div class="col-sm-4"></div>
+					  </div>
+					</div>
+					<div class="col-sm-6 container">
+					  <div class="row">
+							<h3 style="text-align:center;">Envelope Two</h3>
+						</div>
+						<div class="row">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4 center-block">
+								<strong>Name:</strong><br/><input type="text" id="nametwo" name="nametwo" />
+							</div>
+							<div class="col-sm-4"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-4"></div>
+							<div class="col-sm-4">
+								<strong>Id:</strong><br/><input type="text" id="idtwo" name="idtwo" />
+							</div>
+							<div class="col-sm-4"></div>
+						</div>
+					</div>
+				</div>
+				<br />
+				<div class="container row">
+					<div class="col-sm-5"></div>
+					<input type="submit" class="btn btn-success col-sm-2" value="Submit" />
+					<div class="col-sm-5"></div>
+				</div>
+			</form>
+		</main>
+	</div>
+</body>
+</html>
