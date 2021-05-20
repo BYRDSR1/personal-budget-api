@@ -119,6 +119,7 @@ const deleteEnvelope = (find) => {
 		console.log(err)
 	});
 }
+
 /**
 * resetEnvelopeIds()
 *
@@ -131,7 +132,6 @@ const resetEnvelopeIds = () => {
 	for(let i = 1; i <= envelopes.length; i++) {
 		envelopes[(i-1)].id = i;
 	}
-	console.log(envelopes);
 	const countData = "const count = " + (envelopes.length + 1) + ";module.exports = count;";
 	fs.writeFile(path.join(__dirname, "..", "db", "count.js"), countData, (err) =>{
 		console.log(err)
@@ -142,11 +142,28 @@ const resetEnvelopeIds = () => {
 	});
 }
 
+/**
+* transferData()
+*
+* 
+*/
+
+const transferData = (find1, find2) => {
+	const env1 = findEnvelope(find1, "object")[0];
+	const env2 = findEnvelope(find2, "object")[0];
+	env2.amount = env1.amount;
+	const data = "const envelopes = " + convertArrayToString(envelopes) + ";module.exports = envelopes;";
+	fs.writeFile(path.join(__dirname, "..", "db", "db.js"), data, (err) => {
+		console.log(err)
+	});
+}
+
 module.exports = {
 	convertEnvelopesToHTML,
   addToEnvelopes,
 	findEnvelope,
 	updateEnvelope,
 	deleteEnvelope,
-	resetEnvelopeIds
+	resetEnvelopeIds,
+	transferData
 };
