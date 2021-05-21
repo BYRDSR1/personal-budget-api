@@ -29,12 +29,12 @@ envelopesRouter.post("/", (req, res, next) => {
 	const amount = req.body.amount;	
 	const data = "const count = " + (count + 1) + ";module.exports = count;"
 	fs.writeFile(path.join(__dirname, "..", "db", "count.js"), data, err => {
-		res.status(500).send("ERROR 500 INTERNAL SERVER ERROR");
+		console.log(err);
 	});
 	const newEnvelope = addToEnvelopes(name, amount, count);
-	res.status(201);
-	res.redirect("/envelopes");
-	next();
+	res.status(201).render(path.join(__dirname, "..", "views", "pages", "envelopes.ejs"), {
+		name: "envelopes"
+	});
 })
 
 module.exports = envelopesRouter;
