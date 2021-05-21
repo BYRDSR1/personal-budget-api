@@ -27,6 +27,7 @@
       		- home.js
 		- reset.js
 		- search.js
+		- transfer.js
 		- update.js
     	- utils/
       		- funcs.js
@@ -37,8 +38,10 @@
 			- delete.ejs
 			- envelopes.ejs
 			- index.ejs
+			- notfound.ejs
 			- reset.ejs
 			- search.ejs
+			- transfer.ejs
 			- update.ejs
 		- partials/
 			- head.ejs
