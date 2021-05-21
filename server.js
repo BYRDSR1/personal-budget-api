@@ -42,7 +42,10 @@ app.get("/:path", (req, res, next) => {
 	const file = req.params.path;
 	fs.readFile(file, (err, data) => {
 		if(err) {
-			res.status(404).send("ERROR 404 PAGE NOT FOUND")
+			res.status(404).render(path.join(__dirname, "views", "pages", "notfound.ejs"), {
+				name: "err",
+				page: file
+			});
 		} else {
 			next();
 		}
